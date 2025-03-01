@@ -1,0 +1,67 @@
+#File: .gitignore
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+
+# If you use Django’s collectstatic command, then ignore the staticfiles directory.
+staticfiles/
+
+# Media files
+media/
+
+# dotenv
+.env
+
+# Coverage reports
+.coverage
+.tox/
+.noseids
+*.cover
+coverage.xml
+htmlcov/
+
+# Unit test / coverage reports
+.cache
+.pytest_cache/
+
+# VSCode settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
