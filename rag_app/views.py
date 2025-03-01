@@ -1,36 +1,35 @@
 # File: open_party_rag/rag_app/views.py
 import os
 import json
-from datetime import datetime
 import openai
 from pinecone import Pinecone, ServerlessSpec
+from dotenv import load_dotenv
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
+load_dotenv()
 
+pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"), environment=os.getenv("PINECONE_ENV"))
 INDEX_NAME = "rag-index"
-if INDEX_NAME not in pc.list_indexes().names():
-    sample_embedding = openai.Embedding.create(input="sample", model="text-embedding-ada-002")
-    dimension = len(sample_embedding["data"][0]["embedding"])
+if INDEX_NAME not in pc.list_indexes():
+    sample_embedding = openai.embeddings.create(input="sample", model="text-embedding-ada-002")
+    dimension = len(sample_embedding.data[0].embedding)
+    region = os.getenv("PINECONE_ENV")
+    cloud = "gcp" if "gcp" in region else "aws"
     pc.create_index(
         name=INDEX_NAME,
         dimension=dimension,
-        metric='euclidean',
+        metric="euclidean",
         spec=ServerlessSpec(
-            cloud='aws',
-            region='us-west-2'
+            cloud=cloud,
+            region=region
         )
     )
-
 index = pc.Index(INDEX_NAME)
 
 def get_embedding(text):
-    response = openai.Embedding.create(
-        input=text,
-        model="text-embedding-ada-002"
-    )
-    return response["data"][0]["embedding"]
+    response = openai.embeddings.create(input=text, model="text-embedding-ada-002")
+    return response.data[0].embedding
 
 @csrf_exempt
 def query_rag(request):
