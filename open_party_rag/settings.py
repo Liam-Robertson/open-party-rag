@@ -1,4 +1,4 @@
-#File: open_party_rag/open_party_rag/settings.py
+# File: open_party_rag/open_party_rag/settings.py
 import os
 from pathlib import Path
 from dotenv import load_dotenv
@@ -53,20 +53,16 @@ WSGI_APPLICATION = 'open_party_rag.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv("POSTGRES_DB", "defaultdb"),
-        'USER': os.getenv("POSTGRES_USER", "your_postgres_user"),
-        'PASSWORD': os.getenv("POSTGRES_PASSWORD", "your_postgres_password"),
-        'HOST': os.getenv("POSTGRES_HOST", "your_postgres_host"),
-        'PORT': os.getenv("POSTGRES_PORT", "5432"),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 LANGUAGE_CODE = 'en-us'

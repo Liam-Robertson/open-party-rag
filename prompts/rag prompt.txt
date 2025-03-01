@@ -33,7 +33,7 @@ Notes:
 - Whenever you give me code, give me the entire file, don't abbreviate
 - Don't leave comments in the code, except for a single comment at the top of the file stating the file path, such as this: 
     - # File: open_party_rag/rag_app/views.py
-- Give an explanation of the changes you made before the code
+- Before you give the code, give an explanation of the problem and your solution
 
 -----------------
 #File: open_party_rag/open_party_rag/__init__.py
