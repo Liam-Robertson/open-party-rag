@@ -7,10 +7,9 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
-PINECONE_ENV = os.getenv("PINECONE_ENV", "us-west-2")  # Use your actual Pinecone environment
+PINECONE_ENV = os.getenv("PINECONE_ENV", "eu-west-1")
 INDEX_NAME = "rag-index"
 
-# Initialize Pinecone client and index lazily
 pc = None
 index = None
 

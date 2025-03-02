@@ -1,0 +1,4 @@
+- python .\rag_app\data_upload\ingest_data.py
+
+Youtube download as mp3: 
+yt-dlp -x --audio-format mp3 <YouTube-URL>
